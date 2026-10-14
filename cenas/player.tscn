@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://qnmpb8lohesg"]
+
+[ext_resource type="Script" uid="uid://bqjeue7xveks" path="res://doggy.gd" id="1_kthid"]
+[ext_resource type="Texture2D" uid="uid://cilkmgh2tclyr" path="res://art/sprite/doggo.png" id="2_xojfc"]
+[ext_resource type="Texture2D" uid="uid://dmf1oognd8pqp" path="res://art/sprite/erick.png" id="3_8v4ht"]
+[ext_resource type="Texture2D" uid="uid://11k6cmxh4nhl" path="res://art/sprite/pop.png" id="3_15dsx"]
+[ext_resource type="Texture2D" uid="uid://bunthgch4bigc" path="res://art/sprite/hurtdoggo.png" id="3_xojfc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u0ya7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xojfc")
+}],
+"loop": 1,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8v4ht")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xojfc")
+}],
+"loop": 0,
+"name": &"hurt_doggo",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u0ya7"]
+radius = 32.0
+height = 96.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mrr3"]
+radius = 34.0
+height = 80.0
+
+[node name="erick" type="CharacterBody2D" unique_id=631083193 groups=["player"]]
+collision_layer = 2
+script = ExtResource("1_kthid")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=425016572]
+position = Vector2(9, -51.000015)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_u0ya7")
+
+[node name="Pop" type="Sprite2D" parent="sprite" unique_id=160265988]
+position = Vector2(14.285156, 28.571533)
+texture = ExtResource("3_15dsx")
+
+[node name="playercollision" type="CollisionShape2D" parent="." unique_id=1531063598]
+visible = false
+light_mask = 2
+position = Vector2(0, -50)
+shape = SubResource("CapsuleShape2D_u0ya7")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=93935655]
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1127566507]
+light_mask = 16
+visibility_layer = 8
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1619645001]
+position = Vector2(1, -42)
+shape = SubResource("CapsuleShape2D_6mrr3")
+debug_color = Color(0, 0.6245304, 0.52530694, 0.41960785)
+
+[node name="imunity" type="Timer" parent="." unique_id=2035321013]
+
+[connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="timeout" from="imunity" to="." method="_on_imunity_timeout"]

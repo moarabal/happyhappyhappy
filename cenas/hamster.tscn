@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://buq651s6geygf"]
+
+[ext_resource type="Texture2D" uid="uid://n7ta1nqg84n7" path="res://art/sprite/hamster.png" id="1_aqv77"]
+[ext_resource type="Script" uid="uid://h0to7iu87hic" path="res://scripts/hamster.gd" id="1_v8fff"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yoh5j"]
+radius = 19.0
+height = 49.99997
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6mrr3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aqv77")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mrr3"]
+radius = 21.0
+height = 56.0
+
+[node name="hamster" type="CharacterBody2D" unique_id=1188416103]
+collision_layer = 2
+script = ExtResource("1_v8fff")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1581329668]
+visible = false
+position = Vector2(-9, 8)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yoh5j")
+debug_color = Color(0, 0.3565494, 0.77839035, 0.41960785)
+
+[node name="hamster_sprite" type="AnimatedSprite2D" parent="." unique_id=13735349]
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_6mrr3")
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=735116460]
+collision_layer = 8
+collision_mask = 16
+
+[node name="colision" type="CollisionShape2D" parent="hurtbox" unique_id=1059423071]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-9, 5.0000005)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6mrr3")
+debug_color = Color(0.98093766, 0, 0.37942353, 0.41960785)
