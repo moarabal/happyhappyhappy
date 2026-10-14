@@ -51,24 +51,25 @@ position = Vector2(14.285156, 28.571533)
 texture = ExtResource("4_m2gv8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1720209435]
+visible = false
 position = Vector2(0, -50)
 shape = SubResource("CapsuleShape2D_u0ya7")
 
-[node name="parede" type="StaticBody2D" parent="." unique_id=509197137]
+[node name="wall" type="StaticBody2D" parent="." unique_id=509197137]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="parede" unique_id=362931622]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=362931622]
 position = Vector2(581.75, -10)
 shape = SubResource("RectangleShape2D_u0ya7")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="parede" unique_id=796134458]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="wall" unique_id=796134458]
 position = Vector2(573, 658)
 shape = SubResource("RectangleShape2D_u0ya7")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="parede" unique_id=642692752]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="wall" unique_id=642692752]
 position = Vector2(-10, 324)
 shape = SubResource("RectangleShape2D_dtglo")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="parede" unique_id=253658692]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="wall" unique_id=253658692]
 position = Vector2(1162, 328)
 shape = SubResource("RectangleShape2D_dtglo")
 
