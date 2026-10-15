@@ -19,12 +19,20 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if player:
 		var direction = position.direction_to(player.global_position)
-		velocity = (direction*acel*delta)
+		#var distance = 
 		wobble(delta)
-		if direction.x >0.0:
-			hamster_sprite.flip_h = true
-		elif direction.x < 0.0:
-			hamster_sprite.flip_h = false
+		if not player.isinhitbox():
+			if direction.x >0.0:
+				hamster_sprite.flip_h = true
+			elif direction.x < 0.0:
+				hamster_sprite.flip_h = false
+			velocity = (direction*acel*delta)
+		else:
+			if velocity.length()>(friction*delta):
+				velocity-= velocity.normalized() * (friction*delta)
+			else:
+				velocity = Vector2.ZERO
+				hamster_sprite.rotation = 0
 		
 		player.p_hurt(dmg)
 		

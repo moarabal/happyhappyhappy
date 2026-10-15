@@ -30,13 +30,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
-	
 	
 	if hp>0:
 		player_movement(delta)
 	else:
-		sprite.play("dead")
+		die()
 	
 
 	move_and_slide()
@@ -83,6 +81,9 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 func _on_hitbox_area_exited(area: Area2D) -> void:
 	inhitbox=false
 	
+func isinhitbox() -> bool:
+	return inhitbox
+	
 
 func _on_sprite_animation_finished() -> void:
 	sprite.play("default")
@@ -104,3 +105,15 @@ func p_hurt(dmg) -> void:
 
 func _on_imunity_timeout() -> void:
 	imune=false
+
+
+func die() -> void:
+	sprite.play("dead")
+	imune=true
+	velocity= Vector2.ZERO
+	
+	
+	
+	
+	
+	

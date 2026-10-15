@@ -59,6 +59,8 @@ right={
 2d_render/layer_3="items"
 2d_render/layer_4="hurtbox"
 2d_render/layer_5="hitbox"
+2d_physics/layer_4="inimigo"
+2d_physics/layer_5="player"
 
 [physics]
 

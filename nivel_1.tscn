@@ -11,6 +11,7 @@ size = Vector2(1164.5, 20)
 size = Vector2(20, 688)
 
 [node name="nivel 1" type="Node2D" unique_id=554192354]
+y_sort_enabled = true
 
 [node name="grass" type="Parallax2D" parent="." unique_id=1307984700]
 repeat_size = Vector2(184.32, 184.32)
