@@ -111,6 +111,7 @@ func die() -> void:
 	sprite.play("dead")
 	imune=true
 	velocity= Vector2.ZERO
+	sprite.rotation = 0
 	
 	
 	
