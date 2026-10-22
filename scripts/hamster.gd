@@ -1,16 +1,24 @@
 extends CharacterBody2D
 
 @onready var hamster_sprite: AnimatedSprite2D = $hamster_sprite
+@onready var bate: Timer = $bate
 
 var player: Node2D = null
 const max_speed = 200.0
 const acel = 4000.0
 const friction = 2800.0
 
+var inphitbox : bool
+
+
+
 @export var dmg = 1
+@export var maxhp = 3
+var hp = maxhp
+
+
 
 var time = 0.0
-
 
 func _ready() -> void:
 	player=get_tree().get_first_node_in_group("player")
@@ -18,10 +26,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if player:
-		var direction = position.direction_to(player.global_position)
-		#var distance = 
-		wobble(delta)
-		if not player.isinhitbox():
+		if not inphitbox:
+			var direction = position.direction_to(player.global_position)
+			wobble(delta)
 			if direction.x >0.0:
 				hamster_sprite.flip_h = true
 			elif direction.x < 0.0:
@@ -34,15 +41,42 @@ func _physics_process(delta: float) -> void:
 				velocity = Vector2.ZERO
 				hamster_sprite.rotation = 0
 		
-		player.p_hurt(dmg)
+		
 		
 		
 
 	move_and_slide()
 
-
-
-
 func wobble(delta) -> void:
 	hamster_sprite.rotation = sin(time*10)*0.1
 	time += delta
+
+
+func _on_bate_timeout() -> void:
+	if inphitbox and player.hp>0:
+		player.p_hurt(dmg)
+		bate.start()
+	
+
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		inphitbox = true
+		if player.hp>0:
+			player.p_hurt(dmg)
+			bate.start()
+
+
+func _on_hurtbox_area_exited(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		inphitbox = false
+		bate.stop()
+		
+
+
+
+func ehurt(dmg) -> void:
+	if hp>0:
+		#sprite.play("hurt")
+		hp-=dmg
+		print("vida hamster: ",hp," / ", maxhp)

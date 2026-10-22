@@ -74,16 +74,7 @@ func wobble(delta) -> void:
 
 
 
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	inhitbox=true
 
-
-func _on_hitbox_area_exited(area: Area2D) -> void:
-	inhitbox=false
-	
-func isinhitbox() -> bool:
-	return inhitbox
-	
 
 func _on_sprite_animation_finished() -> void:
 	sprite.play("default")
@@ -92,7 +83,7 @@ func _on_sprite_animation_finished() -> void:
 func p_hurt(dmg) -> void:
 	if imune:
 		return
-	if inhitbox and hp>0:
+	elif hp>0:
 		sprite.play("hurt_doggo")
 		hp-=dmg
 		print("vida: ",hp," / ", maxhp)
