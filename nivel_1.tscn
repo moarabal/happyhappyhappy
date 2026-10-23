@@ -50,7 +50,7 @@ shape = SubResource("RectangleShape2D_dtglo")
 position = Vector2(577, 323)
 
 [node name="hamster" parent="." unique_id=1188416103 instance=ExtResource("3_2lask")]
-position = Vector2(266, 197)
+position = Vector2(84, 147)
 
 [node name="pop" parent="." unique_id=246712231 instance=ExtResource("4_m2gv8")]
 position = Vector2(462, 180)

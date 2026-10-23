@@ -4,7 +4,7 @@ var player : Node2D = null
 
 
 var SPEED = 500.0
-var direction : Vector2
+var direction = Vector2.RIGHT
 var rangetrav = 0.0
 @export var dmg = 1
 
@@ -26,4 +26,4 @@ func _physics_process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
 		area.get_parent().ehurt(dmg)
-		queue_free()
+	queue_free()

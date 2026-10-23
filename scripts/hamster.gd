@@ -13,7 +13,7 @@ var inphitbox : bool
 
 
 @export var dmg = 1
-@export var maxhp = 3
+@export var maxhp = 1
 var hp = maxhp
 
 
@@ -80,3 +80,14 @@ func ehurt(dmg) -> void:
 		#sprite.play("hurt")
 		hp-=dmg
 		print("vida hamster: ",hp," / ", maxhp)
+		
+		if hp<1:
+			die()
+
+
+
+func die() -> void:
+	#hamster_sprite.play("dead")
+	velocity = Vector2.ZERO
+	hamster_sprite.rotation = 0
+	queue_free()

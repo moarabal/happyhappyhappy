@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://qnmpb8lohesg"]
 
 [ext_resource type="Script" uid="uid://bqjeue7xveks" path="res://doggy.gd" id="1_kthid"]
+[ext_resource type="Script" uid="uid://bb5if4noubcwg" path="res://scripts/detect_enemy.gd" id="2_8v4ht"]
 [ext_resource type="Texture2D" uid="uid://cilkmgh2tclyr" path="res://art/sprite/doggo.png" id="2_xojfc"]
+[ext_resource type="PackedScene" uid="uid://b4p4fwaonw56v" path="res://cenas/pop.tscn" id="3_4y2i1"]
 [ext_resource type="Texture2D" uid="uid://dmf1oognd8pqp" path="res://art/sprite/erick.png" id="3_8v4ht"]
 [ext_resource type="Texture2D" uid="uid://11k6cmxh4nhl" path="res://art/sprite/pop.png" id="3_15dsx"]
 [ext_resource type="Texture2D" uid="uid://bunthgch4bigc" path="res://art/sprite/hurtdoggo.png" id="3_xojfc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mrr3"]
+radius = 401.0798
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u0ya7"]
 animations = [{
@@ -45,6 +50,25 @@ height = 80.0
 collision_layer = 2
 script = ExtResource("1_kthid")
 
+[node name="detect_enemy" type="Node2D" parent="." unique_id=423903505]
+position = Vector2(9, -43)
+scale = Vector2(0.07, 0.07)
+script = ExtResource("2_8v4ht")
+projscene = ExtResource("3_4y2i1")
+
+[node name="Timer" type="Timer" parent="detect_enemy" unique_id=15824749]
+
+[node name="rangefinder" type="Area2D" parent="detect_enemy" unique_id=1242840567]
+position = Vector2(-128.57143, 614.2857)
+scale = Vector2(14.285714, 14.285714)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_enemy/rangefinder" unique_id=1358904176]
+position = Vector2(1, -36)
+shape = SubResource("CircleShape2D_6mrr3")
+debug_color = Color(0.8117647, 0.8117647, 0.8117647, 0.18039216)
+
 [node name="sprite" type="AnimatedSprite2D" parent="." unique_id=425016572]
 position = Vector2(9, -43)
 scale = Vector2(0.07, 0.07)
@@ -55,7 +79,6 @@ position = Vector2(14.285156, 28.571533)
 texture = ExtResource("3_15dsx")
 
 [node name="playercollision" type="CollisionShape2D" parent="." unique_id=1531063598]
-visible = false
 light_mask = 2
 position = Vector2(0, -41)
 shape = SubResource("CapsuleShape2D_u0ya7")
@@ -78,6 +101,7 @@ debug_color = Color(0, 0.6245304, 0.52530694, 0.41960785)
 [node name="imunity" type="Timer" parent="." unique_id=2035321013]
 wait_time = 0.5
 
+[connection signal="timeout" from="detect_enemy/Timer" to="detect_enemy" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="sprite" to="." method="_on_sprite_animation_finished"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
