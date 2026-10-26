@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="happyhappyhappy"
-run/main_scene="res://nivel_1.tscn"
+run/main_scene="uid://bl3yp6am47oj0"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

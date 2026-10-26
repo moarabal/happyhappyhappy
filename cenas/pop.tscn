@@ -19,4 +19,8 @@ texture = ExtResource("2_q6fms")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1484728974]
 shape = SubResource("CircleShape2D_u0ya7")
 
+[node name="cooldown" type="Timer" parent="." unique_id=49915786]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

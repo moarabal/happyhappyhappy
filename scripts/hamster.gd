@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var bate: Timer = $bate
 
 var player: Node2D = null
-const max_speed = 200.0
-const acel = 4000.0
+const max_speed = 1000.0
+const acel = 9000.0
 const friction = 2800.0
 
 var inphitbox : bool
@@ -34,6 +34,8 @@ func _physics_process(delta: float) -> void:
 			elif direction.x < 0.0:
 				hamster_sprite.flip_h = false
 			velocity = (direction*acel*delta)
+			velocity = velocity.limit_length(max_speed)
+			print(velocity)
 		else:
 			if velocity.length()>(friction*delta):
 				velocity-= velocity.normalized() * (friction*delta)
@@ -56,7 +58,7 @@ func _on_bate_timeout() -> void:
 	if inphitbox and player.hp>0:
 		player.p_hurt(dmg)
 		bate.start()
-	
+
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:

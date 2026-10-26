@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bl3yp6am47oj0"]
+
+[ext_resource type="Script" uid="uid://hh6g2tlngary" path="res://scripts/main_menu.gd" id="1_06t4h"]
+[ext_resource type="PackedScene" uid="uid://c5gt0lqh21ykb" path="res://cenas/fade_transitions.tscn" id="2_7vrkn"]
+
+[node name="main_menu" type="Node2D" unique_id=335235522]
+script = ExtResource("1_06t4h")
+
+[node name="button_manager" type="Control" parent="." unique_id=575581115]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PLAY" type="Button" parent="button_manager" unique_id=2067322694]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 359.0
+offset_right = 679.0
+offset_bottom = 428.0
+text = "PLAY"
+
+[node name="OPTIONS" type="Button" parent="button_manager" unique_id=1542800023]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 444.0
+offset_right = 679.0
+offset_bottom = 513.0
+text = "OPTIONS"
+
+[node name="BYE" type="Button" parent="button_manager" unique_id=284517405]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 530.0
+offset_right = 678.0
+offset_bottom = 599.0
+text = "BYE"
+
+[node name="fade_transitions" parent="." unique_id=175222459 instance=ExtResource("2_7vrkn")]
+visible = false
+
+[node name="fade_timer" type="Timer" parent="fade_transitions" unique_id=1077172377]
+wait_time = 1.0999999999999999
+one_shot = true
+
+[connection signal="pressed" from="button_manager/PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="button_manager/OPTIONS" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="button_manager/BYE" to="." method="_on_bye_pressed"]
+[connection signal="timeout" from="fade_transitions/fade_timer" to="." method="_on_fade_timer_timeout"]

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://ftcudpjfydpo"]
 
 [ext_resource type="Texture2D" uid="uid://dmldx82vmcx0y" path="res://art/grasstile.png" id="1_2lask"]
+[ext_resource type="Script" uid="uid://b4j8jkebf3kh4" path="res://nivel_1.gd" id="1_320mp"]
 [ext_resource type="PackedScene" uid="uid://qnmpb8lohesg" path="res://cenas/player.tscn" id="2_eciuy"]
 [ext_resource type="PackedScene" uid="uid://buq651s6geygf" path="res://cenas/hamster.tscn" id="3_2lask"]
-[ext_resource type="PackedScene" uid="uid://b4p4fwaonw56v" path="res://cenas/pop.tscn" id="4_m2gv8"]
+[ext_resource type="PackedScene" uid="uid://c5gt0lqh21ykb" path="res://cenas/fade_transitions.tscn" id="5_kd3qp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0ya7"]
 size = Vector2(1164.5, 20)
@@ -13,6 +14,7 @@ size = Vector2(20, 688)
 
 [node name="nivel 1" type="Node2D" unique_id=554192354]
 y_sort_enabled = true
+script = ExtResource("1_320mp")
 
 [node name="grass" type="Parallax2D" parent="." unique_id=1307984700]
 repeat_size = Vector2(184.32, 184.32)
@@ -50,7 +52,60 @@ shape = SubResource("RectangleShape2D_dtglo")
 position = Vector2(577, 323)
 
 [node name="hamster" parent="." unique_id=1188416103 instance=ExtResource("3_2lask")]
-position = Vector2(84, 147)
+position = Vector2(1164, 230)
 
-[node name="pop" parent="." unique_id=246712231 instance=ExtResource("4_m2gv8")]
-position = Vector2(462, 180)
+[node name="hamster2" parent="." unique_id=1088813377 instance=ExtResource("3_2lask")]
+position = Vector2(1233, 1005)
+
+[node name="hamster3" parent="." unique_id=2124151851 instance=ExtResource("3_2lask")]
+position = Vector2(1610, 692)
+
+[node name="hamster4" parent="." unique_id=1685058782 instance=ExtResource("3_2lask")]
+position = Vector2(143, 601)
+
+[node name="hamster5" parent="." unique_id=619823628 instance=ExtResource("3_2lask")]
+position = Vector2(-112, 130)
+
+[node name="hamster6" parent="." unique_id=1657954860 instance=ExtResource("3_2lask")]
+position = Vector2(394, 753)
+
+[node name="hamster7" parent="." unique_id=744267997 instance=ExtResource("3_2lask")]
+position = Vector2(1108, 635)
+
+[node name="hamster8" parent="." unique_id=2041365586 instance=ExtResource("3_2lask")]
+position = Vector2(590, 1066)
+
+[node name="hamster9" parent="." unique_id=1116334245 instance=ExtResource("3_2lask")]
+position = Vector2(1755, 381)
+
+[node name="hamster10" parent="." unique_id=1201727992 instance=ExtResource("3_2lask")]
+position = Vector2(2206, 807)
+
+[node name="hamster11" parent="." unique_id=1443874804 instance=ExtResource("3_2lask")]
+position = Vector2(151, 55)
+
+[node name="hamster12" parent="." unique_id=2066586275 instance=ExtResource("3_2lask")]
+position = Vector2(1480, 209)
+
+[node name="hamster13" parent="." unique_id=513028699 instance=ExtResource("3_2lask")]
+position = Vector2(1484, 539)
+
+[node name="hamster14" parent="." unique_id=855478841 instance=ExtResource("3_2lask")]
+position = Vector2(-154, 556)
+
+[node name="hamster15" parent="." unique_id=955184790 instance=ExtResource("3_2lask")]
+position = Vector2(112, 341)
+
+[node name="hamster16" parent="." unique_id=1576454509 instance=ExtResource("3_2lask")]
+position = Vector2(929, 704)
+
+[node name="hamster17" parent="." unique_id=624495042 instance=ExtResource("3_2lask")]
+position = Vector2(1044, 121)
+
+[node name="hamster18" parent="." unique_id=1294286242 instance=ExtResource("3_2lask")]
+position = Vector2(1697, 3233)
+
+[node name="test_enemies" type="Node2D" parent="." unique_id=2096328711]
+
+[node name="fade_transitions" parent="." unique_id=175222459 instance=ExtResource("5_kd3qp")]
+z_index = 7

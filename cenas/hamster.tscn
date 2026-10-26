@@ -24,6 +24,7 @@ height = 56.0
 
 [node name="hamster" type="CharacterBody2D" unique_id=1188416103 groups=["enemy"]]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_v8fff")
 dmg = 5
 

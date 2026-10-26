@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $sprite
 var time: float = 0
 
-const max_speed = 300.0
+const max_speed = 400.0
 const acel = 4000.0
 const friction = 2800.0
 
